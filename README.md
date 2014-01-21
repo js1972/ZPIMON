@@ -1,10 +1,10 @@
-ZPIMONSC
+ZPIMON
 ========
 
 *** WORK IN PROGRESS ***
 
 
-pimon - an application for monitoring SAP NetWeaver PI-AEX.
+pimon - an application for monitoring SAP NetWeaver PI-AEX (7.31).
 
 
 Includes Development Components for:
@@ -18,4 +18,4 @@ zpi_dict needs to be deployed on it own and before zpi_app which is made up of t
 
 URL: http://&lt;host&gt;:&lt;port&gt;/zpimonui/index.html
 
-Note: the zpi_html module contains the distribution files for the frontend app. See https://github.com/js1972/pimon for the full repo.
+Note: the zpi_html module contains the distribution files for the frontend app.
