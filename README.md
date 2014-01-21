@@ -50,7 +50,7 @@ If you wish to build the source and deploy the components individually, then you
 
 Contributing
 ------------
-Contributions are very welcome. Pimon is light years ahead of SAP's standard toolset in usability and performance, but there is still allot to do to make this the best way to monitor your PI systems.
+Contributions are very welcome. Pimon is light years ahead of SAP's standard toolset in usability and performance, but there is still allot to do to make this the best way to monitor your PI systems. The code base needs work... There are still exceptions that raise "oh shit". Test coverage is poor!  ;-)
 
 To setup NWDS for editing the source and contributing via Github there is a little bit of painful setup that needs to be done first. It all to do with SAP's antiquated NWDS and Development Component model. Maybe there are better ways, but the below seems to work:
 
