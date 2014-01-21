@@ -24,7 +24,7 @@ If you want the link to your connected SAP systems SXMB_MONI transaction to also
 
 Second thing you need to do is to enter the credentials to your PI server as application properties in NetWeaver Administrator. Navigate to NWA -> Java System Properties with this link:
 
-        http://app1poy.inpex.com.au:58000/webdynpro/resources/sap.com/tc~lm~itsam~ui~mainframe~wd/FloorPlanApp?applicationID=com.sap.itsam.cfg.java.systemproperties&applicationViewID=systemproperties
+        http://app1poy.mycompany.com.au:58000/webdynpro/resources/sap.com/tc~lm~itsam~ui~mainframe~wd/FloorPlanApp?applicationID=com.sap.itsam.cfg.java.systemproperties&applicationViewID=systemproperties
         
 Select the applications tab and search for zpi_app. Enter the host_url (and port), username and password for the PI server. The user needs priveleges for PI monitoring.
 
