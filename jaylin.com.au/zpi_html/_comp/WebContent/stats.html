@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Interface Statistics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- favicon - emebdded -->
+    <link href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAMxy3AE1MwgCYwMsArbMOAIW40wAkNEYADh0wAKe1uQArO0wAOExgADFBVACdydkAQmN7AFB0jwAOHS8ALj1OAHiuygBQaH8AVmV4AJGdqwAsO0sA0dkRAI+4xAAwRVgAHjFDAFBkeQC13+IAU2N0ADNDVQCjsrYAfo6RADEcrABdb4QAOz6qADhHWgAKGiwAsLUNAAsaLAAcLD4AbI+oACM1RwCbv8IAi77XAHp9CQBJWWsAFiU3AB4tOwCPwdcATU8FAIm80wAtPEwANERXACEwQgCSlgwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACQAACQAAAAAAAAAAAAAACQkJCQkJAAAAAAAAAAAMQAAJAAAJAAAMQAAAAAALDYnLTU0NAYtJzYsAAAALDYsCyEhISEhIQssNiwAADYENiEUFBQUFBQhNgQ2AAAlFiUhHx8fHx8fISUWJQAAACwPDQ0NASANDQ0mLAAAAAAAGREwGwIiGzIFKQAAAAAAABgXLwwoDgwvAwoAAAAAAAAYDCorKA4rKgwKAAAAAAAACBISGhMTGhISHgAAAAAAADMHLwkQIx0vLhUAAAAAAAAcAAAAAAAAAAAcAAAAAAAAAAAAAAAAAAAAAAAAAP//AAD9vwAA+B8AAO23AADAAwAAgAEAAIABAACAAQAAwAMAAOAHAADgBwAA4AcAAOAHAADgBwAA7/cAAP//AAA=" rel="icon" type="image/x-icon">
+    <link rel="stylesheet" href="css/pimonstats.css">
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <div class="navbar navbar-fixed-top">  <!-- navbar-inverse -->
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><img src="img/owl-blue-brown.png" alt="brand name here"></a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">Message Monitor</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a id="refresh_btn" href="#">
+                <span class="glyphicon glyphicon-refresh"></span> refresh
+              </a>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div> <!-- /NAVBAR -->
+
+    <!-- PAGE CONTENT -->
+    <div class="container-fluid col-lg-12">
+
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="container-fluid">
+            <div class="stats-heading">
+              <h1>pimon dashboard</h1>
+            </div>
+          </div>
+        </div>
+      </div> <!-- end of row 1 -->
+
+      <div class="row">
+        <div class="col-sm-3">
+          <!-- Top 5 interfaces box -->
+          <div class="box">
+            <div class="icon blue">
+              <!--<i class="icon-user"></i>-->
+              <span class="glyphicon glyphicon-stats"></span>
+            </div>
+            <div class="content-right">
+              <div class="title blue">Top messages<br>No.1</div>
+              <div class="smallvalue">ERP_PurOrderNotification_V01</div>
+              <div class="title blue">No .2</div>
+              <div class="smallvalue">ProCon_PurgContractMaint_V01</div>
+              <div class="title blue">No .3</div>
+              <div class="smallvalue">ERP_GdsMovementNotification_V01</div>
+              <div class="title blue">No .4</div>
+              <div class="smallvalue">PersonnelDetails_SAP_to_IAM</div>
+              <div class="title blue">No .5</div>
+              <div class="smallvalue">ERP_InvoiceNotification_V01</div>
+              <br>
+            </div>
+          </div> <!-- end of box -->
+
+          <!-- Eror report box (for all time) -->
+          <div class="box">
+            <div class="icon red">
+              <!--<i class="icon-exclamation-sign"></i>-->
+              <span class="glyphicon glyphicon-exclamation-sign"></span>
+            </div>
+            <div class="content-right">
+              <div class="title red">Message in Error</div>
+              <div class="value pimon-error-alltime"></div>
+              <div class="title orange">Delivering</div>
+              <div class="value pimon-delivering-alltime"></div>
+              <div class="title black">Blacklisted</div>
+              <div class="smallvalue pimon-blacklisted-alltime"></div>
+              <br><br>
+            </div>
+          </div>  <!-- end of box -->
+
+        </div> <!-- end of col-sm-3 -->
+
+        <div class="col-sm-8">
+          <div class="row">
+
+            <!-- TABS -->
+            <ul class="nav nav-tabs pimon-tab-panel">
+              <li class="active"><a href="#tab-iflow-guages" data-toggle="tab">iFlows</a></li>
+              <li><a href="#tab-message-guages" data-toggle="tab">Messages</a></li>
+            </ul>
+            <div class="tab-content pimon-gauges">
+              <div class="tab-pane active" id="tab-iflow-guages">
+              <!-- tab content -->
+              <div class="container-gauges">
+                <div id="gaugeIflowPerDay" class="js-guage"></div>
+                <div id="gaugeIflowErrorsPerDay" class="js-guage"></div>
+                <div id="gaugeIflowOutstandingErrorsPerDay" class="js-guage"></div>
+              </div>
+            </div>
+            <div class="tab-pane" id="tab-message-guages">
+              <!-- tab content -->
+              <div class="container-gauges">
+                <div id="gaugeMessagePerDay" class="js-guage"></div>
+                <div id="gaugeMessageErrorsPerDay" class="js-guage"></div>
+                <div id="gaugeMessageOutstandingErrorsPerDay" class="js-guage"></div>
+              </div>
+            </div>
+
+          </div> <!-- end of row -->
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="page-header">
+                <h3>Succesful message history:</h3>
+              </div>
+            </div>
+          </div>
+          <!-- specify a container for the flot chart legend - if we use the default flot chart legend
+               it does not work properly with the resize plugin -->
+          <!--
+          <div class="row">
+            <div class="col-sm-12">
+              <div id="pimon-chart-legend" class="pull-right"></div>
+            </div>
+          </div>
+          -->
+          <div class="pimon-chart"></div>
+        </div> <!-- end of col-sm-8 -->
+      </div> <!-- end of row 2 -->
+    </div> <!-- end of container col-lg-12 -->
+
+    <script src="js/pimonstats.js"></script>
+  </div></body>
+</html>

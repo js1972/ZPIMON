@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jaxws:bindings xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:jaxws="http://java.sun.com/xml/ns/jaxws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" wsdlLocation="rootwsdl_importedwsdl_2.wsdl">
+  <jaxws:bindings node="wsdl:definitions/wsdl:types/xs:schema[@targetNamespace='urn:java.lang']">
+    <jaxb:globalBindings fixedAttributeAsConstantProperty="true" generateElementClass="true" localScoping="toplevel" underscoreBinding="asCharInWord"/>
+  </jaxws:bindings>
+  <jaxws:bindings node="wsdl:definitions/wsdl:types/xs:schema[@targetNamespace='urn:java/lang']">
+    <jaxb:schemaBindings>
+      <jaxb:package name="lang.java2"/>
+    </jaxb:schemaBindings>
+  </jaxws:bindings>
+</jaxws:bindings>

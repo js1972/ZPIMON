@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application-j2ee-engine xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="application-j2ee-engine.xsd">
+  <reference reference-type="hard">
+    <reference-target provider-name="sap.com" target-type="service">scheduler~runtime</reference-target>
+  </reference>
+  <modules-additional>
+    <module>
+      <entry-name>jaylin.com.au~zpi_ejb.jar</entry-name>
+      <container-type>scheduler~container</container-type>
+    </module>
+  </modules-additional>
+</application-j2ee-engine>

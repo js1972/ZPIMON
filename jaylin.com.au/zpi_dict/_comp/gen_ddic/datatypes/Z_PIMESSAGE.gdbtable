@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dbtable name="Z_PIMESSAGE" creation-date="">
+      <properties>
+           <author></author>      
+           <description language=""></description>                
+      </properties>
+      <predefined-action></predefined-action>
+     <position-is-relevant>false</position-is-relevant>
+     <deployment-status></deployment-status>      
+           <columns>
+             <column name = "SENDER_NAME">
+            <position>11</position>
+            <builtIn-type>string</builtIn-type>
+            <java-sql-type>VARCHAR</java-sql-type>
+
+            
+            <length>255</length>
+            <decimals>0</decimals>
+            <is-not-null>false</is-not-null>
+            <default-value></default-value>
+        </column>
+             <column name = "MESSAGE_KEY">
+            <position>12</position>
+            <builtIn-type>string</builtIn-type>
+            <java-sql-type>VARCHAR</java-sql-type>
+
+            
+            <length>255</length>
+            <decimals>0</decimals>
+            <is-not-null>false</is-not-null>
+            <default-value></default-value>
+        </column>
+             <column name = "PAYLOAD">
+            <position>8</position>
+            <builtIn-type>string</builtIn-type>
+            <java-sql-type>CLOB</java-sql-type>
+
+            
+            <length>0</length>
+            <decimals>0</decimals>
+            <is-not-null>false</is-not-null>
+            <default-value></default-value>
+        </column>
+             <column name = "SENDER_INTERFACE">
+            <position>6</position>
+            <builtIn-type>string</builtIn-type>
+            <java-sql-type>VARCHAR</java-sql-type>
+
+            
+            <length>255</length>
+            <decimals>0</decimals>
+            <is-not-null>false</is-not-null>
+            <default-value></default-value>
+        </column>
+             <column name = "SENDER_NAMESPACE">
+            <position>10</position>
+            <builtIn-type>string</builtIn-type>
+            <java-sql-type>VARCHAR</java-sql-type>
+
+            
+            <length>255</length>
+            <decimals>0</decimals>
+            <is-not-null>false</is-not-null>
+            <default-value></default-value>
+        </column>
+             <column name = "SENDER_PARTY">
+            <position>2</position>
+            <builtIn-type>string</builtIn-type>
+            <java-sql-type>VARCHAR</java-sql-type>
+
+            
+            <length>255</length>
+            <decimals>0</decimals>
+            <is-not-null>false</is-not-null>
+            <default-value></default-value>
+        </column>
+             <column name = "ID">
+            <position>1</position>
+            <builtIn-type>string</builtIn-type>
+            <java-sql-type>VARCHAR</java-sql-type>
+
+            
+            <length>255</length>
+            <decimals>0</decimals>
+            <is-not-null>true</is-not-null>
+            <default-value></default-value>
+        </column>
+             <column name = "START_TIME">
+            <position>7</position>
+            <builtIn-type>timestamp</builtIn-type>
+            <java-sql-type>TIMESTAMP</java-sql-type>
+
+            
+            <length>0</length>
+            <decimals>0</decimals>
+            <is-not-null>false</is-not-null>
+            <default-value></default-value>
+        </column>
+             <column name = "END_TIME">
+            <position>3</position>
+            <builtIn-type>timestamp</builtIn-type>
+            <java-sql-type>TIMESTAMP</java-sql-type>
+
+            
+            <length>0</length>
+            <decimals>0</decimals>
+            <is-not-null>false</is-not-null>
+            <default-value></default-value>
+        </column>
+             <column name = "REF_ID">
+            <position>9</position>
+            <builtIn-type>string</builtIn-type>
+            <java-sql-type>VARCHAR</java-sql-type>
+
+            
+            <length>255</length>
+            <decimals>0</decimals>
+            <is-not-null>false</is-not-null>
+            <default-value></default-value>
+        </column>
+             <column name = "IFLOW">
+            <position>5</position>
+            <builtIn-type>string</builtIn-type>
+            <java-sql-type>VARCHAR</java-sql-type>
+
+            
+            <length>255</length>
+            <decimals>0</decimals>
+            <is-not-null>false</is-not-null>
+            <default-value></default-value>
+        </column>
+             <column name = "STATUS">
+            <position>4</position>
+            <builtIn-type>string</builtIn-type>
+            <java-sql-type>VARCHAR</java-sql-type>
+
+            
+            <length>255</length>
+            <decimals>0</decimals>
+            <is-not-null>false</is-not-null>
+            <default-value></default-value>
+        </column>
+          </columns>
+              <primary-key>
+            <tabname>Z_PIMESSAGE</tabname>
+            <columns>
+                           <column>ID</column>
+                        </columns>
+            
+                        
+         </primary-key>
+                       
+    
+</Dbtable>

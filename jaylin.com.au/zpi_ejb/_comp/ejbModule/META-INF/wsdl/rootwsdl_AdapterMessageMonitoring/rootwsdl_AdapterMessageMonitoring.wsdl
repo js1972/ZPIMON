@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:p0="urn:AdapterMessageMonitoringWsd/basic" xmlns:p1="urn:AdapterMessageMonitoringWsd/ssl" xmlns:p2="urn:AdapterMessageMonitoringWsd/clientCert" xmlns:tns="urn:AdapterMessageMonitoringWsd" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="urn:AdapterMessageMonitoringWsd">
+  <wsdl:import location="./rootwsdl_importedwsdl_1_AdapterMessageMonitoring.wsdl" namespace="urn:AdapterMessageMonitoringWsd/basic"/>
+  <wsdl:import location="./rootwsdl_importedwsdl_3_AdapterMessageMonitoring.wsdl" namespace="urn:AdapterMessageMonitoringWsd/ssl"/>
+  <wsdl:import location="./rootwsdl_importedwsdl_4_AdapterMessageMonitoring.wsdl" namespace="urn:AdapterMessageMonitoringWsd/clientCert"/>
+  <wsdl:service name="AdapterMessageMonitoring">
+    <wsdl:port binding="p0:basicBinding" name="basicPort">
+      <soap:address xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" location="http://SERVER:http_port/AdapterMessageMonitoring/basic?style=document"/>
+    </wsdl:port>
+    <wsdl:port binding="p1:sslBinding" name="sslPort">
+      <soap:address xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" location="https://SERVER:https_port/AdapterMessageMonitoring/ssl?style=document"/>
+    </wsdl:port>
+    <wsdl:port binding="p2:clientCertBinding" name="clientCertPort">
+      <soap:address xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" location="https://SERVER:https_port/AdapterMessageMonitoring/clientCert?style=document"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

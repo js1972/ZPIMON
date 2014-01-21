@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ASCII"?>
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:application="http://java.sun.com/xml/ns/javaee/application_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_5.xsd" version="5">
+  <display-name>LocalDevelopment~zpi_app~jaylin.com.au</display-name>
+  <module>
+    <web>
+      <web-uri>jaylin.com.au~zpi_web.war</web-uri>
+      <context-root>zpimon</context-root>
+    </web>
+  </module>
+  <module>
+    <ejb>jaylin.com.au~zpi_ejb.jar</ejb>
+  </module>
+  <module>
+    <web>
+      <web-uri>jaylin.com.au~zpi_html.war</web-uri>
+      <context-root>zpimonui</context-root>
+    </web>
+  </module>
+</application>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<job-definitions>
+<job-definition description="NW Job to get PI data and cache for INPEX PI Monitor" name="MessageCollectorJob"/>
+</job-definitions>

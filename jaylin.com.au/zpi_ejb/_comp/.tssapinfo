@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<TSSAP-INFO>
+
+<Properties>
+<Property key="j2ee.archive.name" value="jaylin.com.au~zpi_ejb.jar"/>
+<Property key="j2ee.archive.location" value="/gen/default/public/ejbjar/lib/java/"/>
+</Properties>
+</TSSAP-INFO>

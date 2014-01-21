@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-j2ee-engine xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="web-j2ee-engine.xsd">
+	<spec-version>2.4</spec-version>
+	<!-- Map our app role to the existing SAP UME role for viewing the classic XI Monitor -->
+	<security-role-map>
+		<role-name>ZPIMON_UI</role-name>
+		<server-role-name>SAP_XI_MONITOR_J2EE</server-role-name>
+	</security-role-map>
+	<login-module-configuration>
+		<security-policy-domain>/*</security-policy-domain>
+	</login-module-configuration>
+</web-j2ee-engine>

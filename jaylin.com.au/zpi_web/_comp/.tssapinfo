@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<TSSAP-INFO>
+
+<Properties>
+<Property key="j2ee.archive.name" value="jaylin.com.au~zpi_web.war"/>
+<Property key="j2ee.archive.location" value="/gen/default/public/war/lib/java/"/>
+</Properties>
+</TSSAP-INFO>

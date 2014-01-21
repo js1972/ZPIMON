@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- MetaDataAPI generated on: Sunday, June 30, 2013 7:12:57 PM CEST -->
+<DtDbTable xmlns="http://xml.sap.com/2002/10/metamodel/dictionary" xmlns:IDX="urn:sap.com:DtDictionary.DtDbTable:2.0" mmRelease="6.30" mmVersion="2.0" mmTimestamp="1372612377075" name="Z_PIMESSAGE" package="" masterLanguage="en">
+	<DtStructure.StructureElements>
+		<DtField builtInType="string" jdbcTypeName="VARCHAR" length="255" name="ID" notNull="true" position="0">
+			<DtField.ReferencedType>
+				<Core.Reference package="com.sap.dictionary" name="string" type="DtSimpleType"/>
+			</DtField.ReferencedType>
+		</DtField>
+		<DtField builtInType="string" jdbcTypeName="VARCHAR" length="255" name="SENDER_PARTY" notNull="false" position="1">
+			<DtField.ReferencedType>
+				<Core.Reference package="com.sap.dictionary" name="string" type="DtSimpleType"/>
+			</DtField.ReferencedType>
+		</DtField>
+		<DtField builtInType="timestamp" jdbcTypeName="TIMESTAMP" name="END_TIME" notNull="false" position="2">
+			<DtField.ReferencedType>
+				<Core.Reference package="com.sap.dictionary" name="timestamp" type="DtSimpleType"/>
+			</DtField.ReferencedType>
+		</DtField>
+		<DtField builtInType="string" jdbcTypeName="VARCHAR" length="255" name="STATUS" notNull="false" position="3">
+			<DtField.ReferencedType>
+				<Core.Reference package="com.sap.dictionary" name="string" type="DtSimpleType"/>
+			</DtField.ReferencedType>
+		</DtField>
+		<DtField builtInType="string" jdbcTypeName="VARCHAR" length="255" name="IFLOW" notNull="false" position="4">
+			<DtField.ReferencedType>
+				<Core.Reference package="com.sap.dictionary" name="string" type="DtSimpleType"/>
+			</DtField.ReferencedType>
+		</DtField>
+		<DtField builtInType="string" jdbcTypeName="VARCHAR" length="255" name="SENDER_INTERFACE" notNull="false" position="5">
+			<DtField.ReferencedType>
+				<Core.Reference package="com.sap.dictionary" name="string" type="DtSimpleType"/>
+			</DtField.ReferencedType>
+		</DtField>
+		<DtField builtInType="timestamp" jdbcTypeName="TIMESTAMP" name="START_TIME" notNull="false" position="6">
+			<DtField.ReferencedType>
+				<Core.Reference package="com.sap.dictionary" name="timestamp" type="DtSimpleType"/>
+			</DtField.ReferencedType>
+		</DtField>
+		<DtField builtInType="string" jdbcTypeName="CLOB" name="PAYLOAD" notNull="false" position="7">
+			<DtField.ReferencedType>
+				<Core.Reference package="com.sap.dictionary" name="string" type="DtSimpleType"/>
+			</DtField.ReferencedType>
+		</DtField>
+		<DtField builtInType="string" jdbcTypeName="VARCHAR" length="255" name="REF_ID" notNull="false" position="8">
+			<DtField.ReferencedType>
+				<Core.Reference package="com.sap.dictionary" name="string" type="DtSimpleType"/>
+			</DtField.ReferencedType>
+		</DtField>
+		<DtField builtInType="string" jdbcTypeName="VARCHAR" length="255" name="SENDER_NAMESPACE" notNull="false" position="9">
+			<DtField.ReferencedType>
+				<Core.Reference package="com.sap.dictionary" name="string" type="DtSimpleType"/>
+			</DtField.ReferencedType>
+		</DtField>
+		<DtField builtInType="string" jdbcTypeName="VARCHAR" length="255" name="SENDER_NAME" notNull="false" position="10">
+			<DtField.ReferencedType>
+				<Core.Reference package="com.sap.dictionary" name="string" type="DtSimpleType"/>
+			</DtField.ReferencedType>
+		</DtField>
+		<DtField builtInType="string" jdbcTypeName="VARCHAR" length="255" name="MESSAGE_KEY" notNull="false" position="11">
+			<DtField.ReferencedType>
+				<Core.Reference package="com.sap.dictionary" name="string" type="DtSimpleType"/>
+			</DtField.ReferencedType>
+		</DtField>
+	</DtStructure.StructureElements>
+	<DtDbTable.PrimaryKey>
+		<DtPrimaryKey name="PrimaryKey">
+			<DtPrimaryKey.KeyElements>
+				<Core.Reference path="StructureElement:ID"/>
+			</DtPrimaryKey.KeyElements>
+		</DtPrimaryKey>
+	</DtDbTable.PrimaryKey>
+</DtDbTable>

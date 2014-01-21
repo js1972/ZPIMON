@@ -1,0 +1,4 @@
+#Mon Jan 20 14:11:06 WST 2014
+eclipse.preferences.version=1
+org.eclipse.jpt.core.discoverAnnotatedClasses=true
+org.eclipse.jpt.core.platform=sap.jpt.platform

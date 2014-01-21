@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface Monitor</title>
+    <!-- favicon - emebdded -->
+    <link href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAMxy3AE1MwgCYwMsArbMOAIW40wAkNEYADh0wAKe1uQArO0wAOExgADFBVACdydkAQmN7AFB0jwAOHS8ALj1OAHiuygBQaH8AVmV4AJGdqwAsO0sA0dkRAI+4xAAwRVgAHjFDAFBkeQC13+IAU2N0ADNDVQCjsrYAfo6RADEcrABdb4QAOz6qADhHWgAKGiwAsLUNAAsaLAAcLD4AbI+oACM1RwCbv8IAi77XAHp9CQBJWWsAFiU3AB4tOwCPwdcATU8FAIm80wAtPEwANERXACEwQgCSlgwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACQAACQAAAAAAAAAAAAAACQkJCQkJAAAAAAAAAAAMQAAJAAAJAAAMQAAAAAALDYnLTU0NAYtJzYsAAAALDYsCyEhISEhIQssNiwAADYENiEUFBQUFBQhNgQ2AAAlFiUhHx8fHx8fISUWJQAAACwPDQ0NASANDQ0mLAAAAAAAGREwGwIiGzIFKQAAAAAAABgXLwwoDgwvAwoAAAAAAAAYDCorKA4rKgwKAAAAAAAACBISGhMTGhISHgAAAAAAADMHLwkQIx0vLhUAAAAAAAAcAAAAAAAAAAAcAAAAAAAAAAAAAAAAAAAAAAAAAP//AAD9vwAA+B8AAO23AADAAwAAgAEAAIABAACAAQAAwAMAAOAHAADgBwAA4AcAAOAHAADgBwAA7/cAAP//AAA=" rel="icon" type="image/x-icon">
+    
+    <!-- Font Awesome - removed in Bootstrap 3 but the icons are used by tablesorter so add it back here -->
+    <!-- http://fortawesome.github.io/Font-Awesome/get-started - req'd for up/down arrows in tablesorter -->
+    <!-- Font Awesome does not seem to work properly when using their minimised css - the chevron icons
+         do not show -->
+    <!-- https://github.com/daneden/animate.css -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="css/pimon.css">
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to use this application.</p>
+    <![endif]-->
+
+    <!-- NAVBAR -->
+    <div class="navbar navbar-fixed-top">  <!-- navbar-inverse -->
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><img src="img/owl-blue-brown.png" alt="brand name here"></a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#" id="pi_std_monitor">pi java <span class="glyphicon glyphicon-list-alt"></span></a></li>
+            <li><a href="#" id="pi_sxmb_moni">erp <span class="glyphicon glyphicon-list-alt"></span></a></li>
+            <li><a href="stats.html"><span class="glyphicon glyphicon-stats"></span></a></li>
+            <li><a href="#" id="clear_cache_link" data-toggle="tooltip" title="immediate update of pimon with data from pi server">update <span class="glyphicon glyphicon-flash"></span></a></li>
+          </ul> <!-- !! USING LINKS INSTEAD OF BUTTONS NOW FOR CLEANER FLAT LOOK !!
+          <form class="navbar-form navbar-right">
+            <button type="button" id="refresh_btn" class="btn btn-default">
+              <span class="glyphicon glyphicon-refresh"></span> refresh
+            </button>
+            <button type="button" class="btn btn-default js-settings-btn">
+              <span class="glyphicon glyphicon-wrench"></span>
+            </button>
+          </form> -->
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-bell shake"></i>
+                <span class="badge red pimon-error-num">0</span>
+              </a>
+              <ul class="dropdown-menu pimon-notifications" role="menu">
+                <li class="dropdown-header">
+                  <i class="icon-bell"></i> Notifications
+                </li>
+                <li>
+                  <a href="javascript:;" tabindex="-1" role="menuitem">You have no notifications.</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a id="refresh_btn" href="#">
+                <span class="glyphicon glyphicon-refresh"></span> refresh
+              </a>
+            </li>
+            <li>
+              <a href="#" class="js-settings-btn">
+                <span class="glyphicon glyphicon-wrench"></span>
+              </a>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <!-- PAGE CONTAINER -->
+    <div class="container-fluid col-lg-12">  <!-- Take up the full screen with a small margin -->
+
+      <div class="heading">
+        <h1>pimon</h1>
+      </div>
+
+      <select class="selectpicker">
+        <option value="last_hour">last hour</option>
+        <option selected="selected" value="today">today</option>
+        <option value="yesterday">yesterday</option>
+        <option value="week">week</option>
+        <option value="last_week">last week</option>
+        <option value="month">month</option>
+        <option value="year">year</option>
+        <option data-divider="true"></option>
+        <option value="others">other</option>
+      </select>
+      <!-- Display a badge for the number of displayed iFlows -->
+      <span class="badge js-iflow-num"></span>
+      <!-- Show button on right-hand side. reset class is used by tablesorter to clear the filters -->
+      <button type="submit" class="btn btn-default btn-sm pull-right reset">Clear filters</button>
+      
+      <div id="customDates">
+        <div class="form-group">
+          <div class="input-group date" id="customPeriodDateFrom">
+            <input type="text" class="form-control" data-format="DD/MM/YYYY" placeholder="Date From">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+          </span></div>
+          <div class="input-group date" id="customPeriodDateTo">
+            <input type="text" class="form-control" data-format="DD/MM/YYYY" placeholder="Date To">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+          </span></div>
+            <button type="submit" id="btnCustomDateSearch" class="btn btn-primary">Search</button>
+        </div>
+      </div>
+      
+    <!-- BANNER ALERTS -->
+      <!-- Alert for no connection settings -->
+      <div id="js-alert-connection" class="alert alert-block alert-danger fade in">
+        <button type="button" class="close">&times;</button>
+        <h4>Oops! You got a server settings error!</h4>
+        <p>Please enter the server settings required to connect. These will be remembered for next time...</p>
+        <p>&nbsp;</p>
+        <p>
+          <a class="btn btn-danger js-settings-btn" href="#">Settings</a>
+        </p>
+      </div> <!-- /Alert for no connection settings -->
+      <!-- Alert for AJAX error -->
+      <div id="js-alert-ajax" class="alert alert-block alert-danger fade in">
+        <button type="button" class="close">&times;</button>
+        <h4>Oops! You got an AJAX error!</h4>
+        <p>Unable to connect to the server!</p>
+        <p id="js-alert-ajax-text"></p>
+        <p>&nbsp;</p>
+        <p>
+          <a class="btn btn-danger js-settings-btn" href="#">Settings</a>
+        </p>
+      </div> <!-- /Alert for AJAX error --> <!-- /BANNER ALERTS -->
+
+      <!-- Container for MESSAGES TABLE -->
+      <div id="msgs_container" class="table-responsive"></div>
+
+      <!-- MODAL PAYLOAD -->
+      <div class="modal fade pimon-payload-modal" id="pimon-payload-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title">Message details:</h4>
+            </div>
+            <div class="modal-body">
+
+              <ul class="nav nav-tabs" id="modal-payload-tab-list">
+                <li class="active"><a href="#modal-tab-payload" data-toggle="tab">Payload</a></li>
+                <li><a href="#modal-tab-log" data-toggle="tab">Status Log</a></li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane active" id="modal-tab-payload">
+                  <div><pre id="payload_div" class="prettyprint"></pre></div>
+                </div>
+                <div class="tab-pane" id="modal-tab-log">
+                  <div id="modal-tab-log-table"></div>
+                </div>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /MODAL PAYLOAD -->
+
+      <!-- Modal - settings -->
+      <div class="modal" id="myModalSettings" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title">Settings</h4>
+            </div>
+            <div class="modal-body">
+
+              <form role="form">
+                <div class="form-group">
+                  <label for="serverSetting">host server:</label>
+                  <input type="text" class="form-control" id="serverSetting" placeholder="http://ciery:8008">
+                </div>
+                <div class="form-group">
+                  <label for="serverClientSetting">associated ERP server client (for launching sxmb_moni):</label>
+                  <input type="text" class="form-control" id="serverClientSetting" placeholder="030">
+                </div>
+                <div class="form-group">
+                  <label for="serverERPSetting">associated ERP server (for launching sxmb_moni):</label>
+                  <input type="text" class="form-control" id="serverERPSetting" placeholder="http://app-saperd:8002">
+                </div>
+
+                <!-- developer fields -->
+                <div class="pimon-developer">
+                  <br><br><hr>
+                  <div class="form-group">
+                    <label for="serverERPSetting">developer username:</label>
+                    <input type="text" class="form-control" id="developerUsername" placeholder="username">
+                  </div>
+                    <div class="form-group">
+                    <label for="serverERPSetting">developer password:</label>
+                    <input type="password" class="form-control" id="developerPassword" placeholder="password">
+                  </div>
+                </div>
+              </form>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+
+      <!-- FOOTER ALERTS-->
+      <nav id="footer" class="navbar navbar-fixed-bottom" role="navigation">
+        <!--<div class="navbar-inner">-->
+          <div class="alert alert-success">Message cache updated!</div>
+        <!--</div>-->
+      </nav>
+      <nav id="footerAlreadyRunning" class="navbar-fixed-bottom" role="navigation">
+        <div class="navbar-inner">
+          <div class="alert alert-info">Already in process... Click the Refresh button in a moment!</div>
+        </div>
+      </nav>
+      <nav id="footerSettings" class="navbar-fixed-bottom" role="navigation">
+        <div class="navbar-inner">
+          <div class="alert alert-success">Setting saved!</div>
+        </div>
+      </nav>
+      <nav id="footerMsgCancelled" class="navbar-fixed-bottom" role="navigation">
+        <div class="navbar-inner">
+          <div class="alert alert-success">Message cancelled!</div>
+        </div>
+      </nav>
+
+    </div><!-- /.container -->
+
+    <script src="js/pimon.js"></script>
+  </body>
+</html>
