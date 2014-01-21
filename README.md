@@ -13,7 +13,7 @@ Once deployed you can access the app with the url:
         
         http://your_server:your_port/zpimonui/index.html.
 
-First thing to do is go into the Settings dialog and enter the host server. This is just a pointer to the backend app (running on your PI seerver).
+First thing to do is go into the Settings dialog and enter the host server. This is just a pointer to the backend app (running on your PI server).
 e.g.
 
         host server: http://pi.mycompany.com.au:58000.
