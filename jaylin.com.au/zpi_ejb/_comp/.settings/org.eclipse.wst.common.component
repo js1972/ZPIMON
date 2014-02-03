@@ -3,6 +3,7 @@
     <wb-module deploy-name="LocalDevelopment~zpi_ejb~jaylin.com.au">
         <wb-resource deploy-path="/" source-path="/ejbModule"/>
         <wb-resource deploy-path="/" source-path="/.apt_generated"/>
+        <wb-resource deploy-path="/" source-path="/test"/>
         <property name="java-output-path" value="/LocalDevelopment~zpi_ejb~jaylin.com.au/bin"/>
     </wb-module>
 </project-modules>

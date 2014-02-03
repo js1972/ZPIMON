@@ -1,6 +1,5 @@
 package au.com.jaylin.persistence.ejbs;
 
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
@@ -80,7 +79,7 @@ import data.api.mdt.aii.sap.com.MessageParty;
 
 
 @RunWith(MockitoJUnitRunner.class)
-public class PIMessageHandlerTest {
+public class PIMessageHandler_Test {
 	@Mock
 	WebServiceEndPointLocal ws;
 	@Mock

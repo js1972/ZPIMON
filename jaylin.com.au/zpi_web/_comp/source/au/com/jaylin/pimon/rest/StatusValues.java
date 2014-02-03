@@ -9,7 +9,8 @@ public enum StatusValues {
 	delivering,
 	transfertoexternalapplication,
 	canceled,
-	erppostingerror;
+	erppostingerror,
+	holding;
 	
 	public static StatusValues getStatusAsEnum(String status) {
 		StatusValues enumVal = StatusValues.NONE;
@@ -53,6 +54,9 @@ public enum StatusValues {
 			break;
 		case processedsuccessfully:
 			displayStatus = "success";
+			break;
+		case holding:
+			displayStatus = "holding";
 			break;
 		default:
 			displayStatus = "unrecognised status enum:" + statusEnum;

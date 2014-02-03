@@ -51,7 +51,7 @@ class MessageDetails {
 @Stateless
 public class PIMessageHandler implements PIMessageHandlerLocal {
 	private static final int GET_LOG_ENTRIES_MAX_RESULTS = 1000;
-	private static final int GET_MESSAGES_MAX_RESULTS = 1000;
+	private static final int GET_MESSAGES_MAX_RESULTS = 5000;
 	
 	@EJB
 	private PIMessageFacadeLocal piMessageFacade;
@@ -281,8 +281,7 @@ public class PIMessageHandler implements PIMessageHandlerLocal {
     		byteArray = ws.call().getMessageBytesJavaLangStringBoolean(msgKey, false);
     	}
     	catch (Exception e) {
-    		//what goes here?!?
-    		throw new RuntimeException("*** SHIT *** FAILED TO GET PAYLOAD FOR MSGKEY: " + msgKey);
+    		throw new RuntimeException("Read message payload web service failed: ws.call().getMessageBytesJavaLangStringBoolean(msgKey, false). MsgId: " + msgId + ", MsgKey: " + msgKey);
 		}
     	
     	logger.infoT("PIMessageHandler.callMessageDetailsWS(): getMessageBytesJavaLangStringBoolean() WS SUCCESS");
@@ -459,7 +458,14 @@ public class PIMessageHandler implements PIMessageHandlerLocal {
     			msgData.setSender_namespace(assignStringValue(m.getSenderInterface().getValue().getNamespace().getValue()));
     			msgData.setSender_party(assignStringValue(m.getSenderParty().getValue().getName().getValue()));
     			msgData.setStart_time(m.getStartTime().getValue().toGregorianCalendar().getTime());
-    			msgData.setEnd_time(m.getEndTime().getValue().toGregorianCalendar().getTime());
+    			
+    			// End time cane be null when message has "holding" status!
+    			if (m.getEndTime() == null) {
+    				msgData.setEnd_time(null);
+    			} else {
+    				msgData.setEnd_time(m.getEndTime().getValue().toGregorianCalendar().getTime());
+    			}
+    			
     			msgData.setStatus(assignStringValue(m.getStatus().getValue()));
 
     			messageDetails = callMessageDetailsWS(m.getMessageKey().getValue(), m.getMessageID().getValue());

@@ -135,46 +135,95 @@ public class IflowListBuilderImp implements IflowListBuilder {
 		}  // IFLOW LOOP
 	}
 
+	/**
+	 * Set the Worst Message Status value based on the incoming status. Order of priority is:
+	 * 
+	 * -- systemerror
+	 * -- waiting
+	 * -- delivering
+	 * -- holding
+	 * -- canceled
+	 * -- transfertoexternalapplication
+	 * -- success
+	 * 
+	 * Note: SAP mis-spells cancelled as canceled.
+ 	 */
 	private void setWorstMessageStatus(String iflowMessageStatus) {
 		StatusValues enumVal = getStatusAsEnum(iflowMessageStatus);
 		
 		switch (enumVal) {
 		case success:
-			if (this.worstMessageStatus != StatusValues.systemerror && this.worstMessageStatus != StatusValues.waiting && this.worstMessageStatus != StatusValues.delivering && this.worstMessageStatus != StatusValues.transfertoexternalapplication && this.worstMessageStatus != StatusValues.canceled) {
+			if (this.worstMessageStatus != StatusValues.systemerror && 
+				this.worstMessageStatus != StatusValues.waiting && 
+				this.worstMessageStatus != StatusValues.delivering && 
+				this.worstMessageStatus != StatusValues.transfertoexternalapplication && 
+				this.worstMessageStatus != StatusValues.canceled) {
+				
 				this.worstMessageStatus = enumVal;
 			}
 			break;
+			
 		case processedsuccessfully:
-			if (this.worstMessageStatus != StatusValues.systemerror && this.worstMessageStatus != StatusValues.waiting && this.worstMessageStatus != StatusValues.delivering && this.worstMessageStatus != StatusValues.transfertoexternalapplication && this.worstMessageStatus != StatusValues.canceled) {
+			if (this.worstMessageStatus != StatusValues.systemerror && 
+				this.worstMessageStatus != StatusValues.waiting && 
+				this.worstMessageStatus != StatusValues.delivering && 
+				this.worstMessageStatus != StatusValues.transfertoexternalapplication && 
+				this.worstMessageStatus != StatusValues.canceled) {
+				
 				this.worstMessageStatus = StatusValues.success;
 			}
 			break;
+			
 		case systemerror:
 			this.worstMessageStatus = enumVal;
 			break;
+			
 		case waiting:
 			if (this.worstMessageStatus != StatusValues.systemerror) {
 				this.worstMessageStatus = enumVal;
 			}
 			break;
+			
 		case delivering:
-			if (this.worstMessageStatus != StatusValues.systemerror && this.worstMessageStatus != StatusValues.waiting) {
+			if (this.worstMessageStatus != StatusValues.systemerror && 
+				this.worstMessageStatus != StatusValues.waiting) {
+				
 				this.worstMessageStatus = enumVal;
 			}
 			break;
+			
 		case transfertoexternalapplication:
-			if (this.worstMessageStatus != StatusValues.systemerror && this.worstMessageStatus != StatusValues.delivering && this.worstMessageStatus != StatusValues.waiting && this.worstMessageStatus != StatusValues.canceled) {
+			if (this.worstMessageStatus != StatusValues.systemerror && 
+				this.worstMessageStatus != StatusValues.delivering && 
+				this.worstMessageStatus != StatusValues.waiting && 
+				this.worstMessageStatus != StatusValues.canceled) {
+				
 				this.worstMessageStatus = StatusValues.erppostingerror;
 			}
 			break;
+			
 		case canceled:
-			if (this.worstMessageStatus != StatusValues.canceled && this.worstMessageStatus != StatusValues.systemerror && this.worstMessageStatus != StatusValues.waiting) {
+			if (this.worstMessageStatus != StatusValues.canceled && 
+				this.worstMessageStatus != StatusValues.systemerror && 
+				this.worstMessageStatus != StatusValues.waiting) {
+				
 				this.worstMessageStatus = enumVal;
 			}
 			break;
+			
+		case holding:
+			if (this.worstMessageStatus != StatusValues.systemerror && 
+				this.worstMessageStatus != StatusValues.waiting && 
+				this.worstMessageStatus != StatusValues.delivering) {
+				
+				this.worstMessageStatus = enumVal;
+			}
+			break;
+			
 		default:
 			this.worstMessageStatus = StatusValues.NONE;
 			break;
+			
 		}
 	}
 

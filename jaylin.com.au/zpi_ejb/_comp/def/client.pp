@@ -11,14 +11,34 @@
 		<entity>
 			<name>ApplicationProperties</name>
 			<package>au/com/jaylin/persistence/ejbs</package>
+			<caption>ApplicationProperties</caption>
+			<description>ApplicationProperties</description>
+			<entity-type>Java Class</entity-type>
+			<entity-sub-type>Class</entity-sub-type>
+		</entity>
+		<entity>
+			<name>ApplicationProperties</name>
+			<package>au/com/jaylin/persistence/ejbs</package>
+			<caption>ApplicationProperties</caption>
+			<description>ApplicationProperties</description>
+			<entity-type>Java Class</entity-type>
+			<entity-sub-type>Source</entity-sub-type>
+		</entity>
+		<entity>
+			<name>ApplicationPropertiesLocal</name>
+			<package>au/com/jaylin/persistence/ejbs</package>
+			<caption>ApplicationPropertiesLocal</caption>
+			<description>ApplicationPropertiesLocal</description>
 			<entity-type>Java Class</entity-type>
 			<entity-sub-type>Class</entity-sub-type>
 		</entity>
 		<entity>
 			<name>ApplicationPropertiesLocal</name>
 			<package>au/com/jaylin/persistence/ejbs</package>
+			<caption>ApplicationPropertiesLocal</caption>
+			<description>ApplicationPropertiesLocal</description>
 			<entity-type>Java Class</entity-type>
-			<entity-sub-type>Class</entity-sub-type>
+			<entity-sub-type>Source</entity-sub-type>
 		</entity>
 		<entity>
 			<name>AuditLogEntryData</name>
@@ -99,14 +119,34 @@
 		<entity>
 			<name>PIMessageHandler</name>
 			<package>au/com/jaylin/persistence/ejbs</package>
+			<caption>PIMessageHandler</caption>
+			<description>PIMessageHandler</description>
+			<entity-type>Java Class</entity-type>
+			<entity-sub-type>Class</entity-sub-type>
+		</entity>
+		<entity>
+			<name>PIMessageHandler</name>
+			<package>au/com/jaylin/persistence/ejbs</package>
+			<caption>PIMessageHandler</caption>
+			<description>PIMessageHandler</description>
+			<entity-type>Java Class</entity-type>
+			<entity-sub-type>Source</entity-sub-type>
+		</entity>
+		<entity>
+			<name>PIMessageHandlerLocal</name>
+			<package>au/com/jaylin/persistence/ejbs</package>
+			<caption>PIMessageHandlerLocal</caption>
+			<description>PIMessageHandlerLocal</description>
 			<entity-type>Java Class</entity-type>
 			<entity-sub-type>Class</entity-sub-type>
 		</entity>
 		<entity>
 			<name>PIMessageHandlerLocal</name>
 			<package>au/com/jaylin/persistence/ejbs</package>
+			<caption>PIMessageHandlerLocal</caption>
+			<description>PIMessageHandlerLocal</description>
 			<entity-type>Java Class</entity-type>
-			<entity-sub-type>Class</entity-sub-type>
+			<entity-sub-type>Source</entity-sub-type>
 		</entity>
 		<entity>
 			<name>PITimeStamp</name>
@@ -137,20 +177,56 @@
 			<package>au/com/jaylin/persistence/ejbs</package>
 			<caption>ReadMessageLogException</caption>
 			<description>ReadMessageLogException</description>
+			<entity-type>Java Class</entity-type>
+			<entity-sub-type>Source</entity-sub-type>
+		</entity>
+		<entity>
+			<name>TimestampException</name>
+			<package>au/com/jaylin/persistence/ejbs/helpers</package>
+			<caption>TimestampException</caption>
+			<description>TimestampException</description>
+			<entity-type>Java Class</entity-type>
+			<entity-sub-type>Class</entity-sub-type>
+		</entity>
+		<entity>
+			<name>TimestampException</name>
+			<package>au/com/jaylin/persistence/ejbs/helpers</package>
+			<caption>TimestampException</caption>
+			<description>TimestampException</description>
 			<entity-type>Java Class</entity-type>
 			<entity-sub-type>Source</entity-sub-type>
 		</entity>
 		<entity>
 			<name>WebServiceEndPoint</name>
 			<package>au/com/jaylin/persistence/ejbs</package>
+			<caption>WebServiceEndPoint</caption>
+			<description>WebServiceEndPoint</description>
+			<entity-type>Java Class</entity-type>
+			<entity-sub-type>Class</entity-sub-type>
+		</entity>
+		<entity>
+			<name>WebServiceEndPoint</name>
+			<package>au/com/jaylin/persistence/ejbs</package>
+			<caption>WebServiceEndPoint</caption>
+			<description>WebServiceEndPoint</description>
+			<entity-type>Java Class</entity-type>
+			<entity-sub-type>Source</entity-sub-type>
+		</entity>
+		<entity>
+			<name>WebServiceEndPointLocal</name>
+			<package>au/com/jaylin/persistence/ejbs</package>
+			<caption>WebServiceEndPointLocal</caption>
+			<description>WebServiceEndPointLocal</description>
 			<entity-type>Java Class</entity-type>
 			<entity-sub-type>Class</entity-sub-type>
 		</entity>
 		<entity>
 			<name>WebServiceEndPointLocal</name>
 			<package>au/com/jaylin/persistence/ejbs</package>
+			<caption>WebServiceEndPointLocal</caption>
+			<description>WebServiceEndPointLocal</description>
 			<entity-type>Java Class</entity-type>
-			<entity-sub-type>Class</entity-sub-type>
+			<entity-sub-type>Source</entity-sub-type>
 		</entity>
 	</entities>
 </public-part>

@@ -125,6 +125,12 @@ public class PIMonAPI {
 		Collections.sort(messages, new Comparator<PIMessage>() {
 			@Override
 			public int compare(PIMessage msg1, PIMessage msg2) {
+				if (msg1.getEnd_time() == null) {
+					return 1;
+				}
+				if (msg2.getEnd_time() == null) {
+					return -1;
+				}
 				int compareResult = msg1.getEnd_time().compareTo(msg2.getEnd_time());
 				compareResult *= -1;
 				return compareResult;
