@@ -149,6 +149,18 @@ public class PIMonAPI {
 		return messages;
 	}
 
+	/**
+	 * Extract the message payload for a given message Id.
+	 * Find the "displayable" message payload within a message payload via
+	 * start and end markers. this excludes all the XI header information.
+	 * If the resulting payload looks like an xml document, return it as XML.
+	 * If the resulting payload does not look like a complete XML document or
+	 * it includes an <attachment> tag (meaning there are multiple payloads)
+	 * then return it as text.
+	 * 
+	 * @param msgid
+	 * @return String Actual "displayable" message payload
+	 */
 	@GET
 	@Produces({MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN})
 	@Path("iflows/messages/{msgid}/payload/")
@@ -157,7 +169,7 @@ public class PIMonAPI {
 		String contentType = MediaType.TEXT_PLAIN;
 		try {
 			String payload = extractMessagePayload(readMessage(msgid));
-			if(payload != null && payload.startsWith("<?xml") ) {
+			if(payload != null && payload.startsWith("<?xml") && payload.indexOf("<Attachment>") == -1) {
 				contentType = MediaType.APPLICATION_XML;
 			}
 			r = Response.ok(null, contentType).entity(payload).build();
@@ -215,7 +227,7 @@ public class PIMonAPI {
 		}
 		catch(ReadMessageLogException rmle) {
 			logger.errorT("Error reading payload for msgid: '" + msgId + "'. " + rmle.getMessage());
-			r = Response.serverError().entity("Unable to read payload for this message. See trace fiel for more detail.").build();
+			r = Response.serverError().entity("Unable to read payload for this message. See trace file for more detail.").build();
 		}
 		
 		return r;
