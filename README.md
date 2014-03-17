@@ -52,7 +52,7 @@ Contributing
 ------------
 Contributions are very welcome. Pimon is light years ahead of SAP's standard toolset in usability and performance, but there is still allot to do to make this the best way to monitor your PI systems. The code base needs work... There are still exceptions that raise "oh shit". Test coverage is poor!  ;-)
 
-To setup NWDS for editing the source and contributing via Github there is a little bit of painful setup that needs to be done first. It all to do with SAP's antiquated NWDS and Development Component model. Maybe there are better ways, but the below seems to work:
+To setup NWDS for editing the source and contributing via Github there is a little bit of painful setup that needs to be done first. It's all to do with SAP's antiquated NWDS and Development Component model. Maybe there are better ways, but the below seems to work:
 
 1. Download the sca file from the GitHub releases page
 2. Import the sca into NWDS. Switch the the Development Component perspective and right-click the LocalDevelopment folder and choose Import.
@@ -60,7 +60,8 @@ To setup NWDS for editing the source and contributing via Github there is a litt
 4. Close NWDS
 5. In Windows Explorer, navigate to the Development Component Workspace -> LocalDevelopment. If your NWDS Workspace is called "myworkspace", then the folder is myworkspace.jdi. Therefore the path would be /myworkspace.jdi/LocalDevelopment/. Rename the ZPIMON SC to something else
 6. While still in /myworkspace.jdi/LocalDevelopment/ use git to clone this repo
-7. Open NWDS again and manage your changes with git and send pull requests.
+7. Open NWDS again and manage your changes with git and send pull requests
+8. If JUnit tests are not working then ensure your project -> Java Build Path -> Libraries includes: mockito (mockito-all-1.9.5.jar) as an external JAR and JUnit 4 as a Library. For some reason these settings seem to get lost when setting up a new development environment (another one of the mysteries of NWDS).
 
 
 URL: http://&lt;host&gt;:&lt;port&gt;/zpimonui/index.html

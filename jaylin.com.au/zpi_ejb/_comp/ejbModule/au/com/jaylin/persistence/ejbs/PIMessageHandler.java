@@ -262,18 +262,17 @@ public class PIMessageHandler implements PIMessageHandlerLocal {
      * retrieve the message payload.
      * Also scan the payload to determine the refId field which is what
      * we use to group together messages.
-     * Save any sycn message conversation id's for later processing.
+     * Save any sync message conversation id's for later processing.
      * 
      * @param msgKey
      * @param msgId
-     * @return MessageDetails - an object containing the refId and 
-     * payload as Strings.
+     * @return MessageDetails - an object containing the refId and payload as Strings.
      */
     private MessageDetails callMessageDetailsWS(String msgKey, String msgId) {
     	MessageDetails md = new MessageDetails();
     	byte[] byteArray = null;
     	
-    	if (msgKey == null || msgKey == "") {
+    	if (msgKey == null || msgKey.equals("")) {
     		return md;
     	}
     	
@@ -425,6 +424,9 @@ public class PIMessageHandler implements PIMessageHandlerLocal {
     
     private void persistMessageEntities() {
     	for (PIMessage m : messagesToStore) {
+    		if (m.getRef_id() == null || m.getRef_id().equals("")) {
+    			m.setRef_id("*** NO REF ID ***");
+    		}
     		piMessageFacade.update(m);  //actually performs an upsert!
     	}
 	}

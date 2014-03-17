@@ -4,6 +4,7 @@
         <wb-resource deploy-path="/" source-path="/WebContent"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/.apt_generated"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/source"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/test"/>
         <property name="context-root" value="LocalDevelopment~zpi_web~jaylin.com.au"/>
         <property name="java-output-path" value="/LocalDevelopment~zpi_web~jaylin.com.au/bin"/>
     </wb-module>
