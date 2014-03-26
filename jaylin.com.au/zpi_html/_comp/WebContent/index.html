@@ -157,11 +157,63 @@
 
               <ul class="nav nav-tabs" id="modal-payload-tab-list">
                 <li class="active"><a href="#modal-tab-payload" data-toggle="tab">Payload</a></li>
+                <li><a href="#modal-tab-header" data-toggle="tab">Header details</a></li>
                 <li><a href="#modal-tab-log" data-toggle="tab">Status Log</a></li>
               </ul>
               <div class="tab-content">
                 <div class="tab-pane active" id="modal-tab-payload">
                   <div><pre id="payload_div" class="prettyprint"></pre></div>
+                </div>
+                <div class="tab-pane" id="modal-tab-header">
+                  <div id="modal-tab-header-details">
+
+                    <form role="form" class="form-horizontal">
+                      <div class="form-group">
+                        <label for="inputMsgId" class="col-sm-3 control-label">Message Id</label>
+                        <div class="col-sm-9">
+                          <p class="form-control-static" id="inputMsgId"></p>
+                          <!--<input type="text" class="form-control" id="inputMsgId">-->
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="inputProcMode" class="col-sm-3 control-label">Processing Mode</label>
+                        <div class="col-sm-9">
+                          <p class="form-control-static" id="inputProcMode"></p>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="inputQoS" class="col-sm-3 control-label">Quality of Service</label>
+                        <div class="col-sm-9">
+                          <p class="form-control-static" id="inputQoS"></p>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="inputQueueId" class="col-sm-3 control-label">Queue Id</label>
+                        <div class="col-sm-9">
+                          <p class="form-control-static" id="inputQueueId"></p>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="inputQueueSeq" class="col-sm-3 control-label">Sequence Number</label>
+                        <div class="col-sm-9">
+                          <p class="form-control-static" id="inputQueueSeq"></p>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="inputSender" class="col-sm-3 control-label">Sender</label>
+                        <div class="col-sm-9">
+                          <p class="form-control-static" id="inputSender"></p>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="inputReceiver" class="col-sm-3 control-label">Receiver</label>
+                        <div class="col-sm-9">
+                          <p class="form-control-static" id="inputReceiver"></p>
+                        </div>
+                      </div>
+                    </form>
+
+                  </div>
                 </div>
                 <div class="tab-pane" id="modal-tab-log">
                   <div id="modal-tab-log-table"></div>

@@ -10,6 +10,8 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -227,6 +229,68 @@ public class PIMonAPI {
 		}
 		catch(ReadMessageLogException rmle) {
 			logger.errorT("Error reading payload for msgid: '" + msgId + "'. " + rmle.getMessage());
+			r = Response.serverError().entity("Unable to read payload for this message. See trace file for more detail.").build();
+		}
+		
+		return r;
+	}
+	
+	/**
+	 * Use regex to get info about the message from payload.
+	 * Note the "(?i)" in java regex means case-insensitive!
+	 * This is an embedded pattern in the Java Matcher
+	 * (Pattern.CASE_INSENSITIVE). 
+	 * 
+	 * @param msgId
+	 * @return
+	 */
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("iflows/messages/{msgid}/info/")
+	public Response getMessageInfo(@PathParam("msgid") String msgId) {
+		Response r = null;
+		MessageHeaderDetails msgHdr = new MessageHeaderDetails();
+		String payload = "";
+		
+		msgHdr.msgId = msgId;
+		
+		try {
+			payload = readMessage(msgId);
+			
+			Pattern patternMode = Pattern.compile("(?i)<SAP:ProcessingMode>(.+?)</SAP:ProcessingMode>");
+			Matcher matcherMode = patternMode.matcher(payload);
+			while (matcherMode.find()) {
+				msgHdr.mode = matcherMode.group(1);
+			} 
+			
+			Pattern patternQos = Pattern.compile("(?i)<SAP:QualityOfService>(.+?)</SAP:QualityOfService>");
+			Matcher matcherQos = patternQos.matcher(payload);
+			while (matcherQos.find()) {
+				msgHdr.qos = matcherQos.group(1);
+			}
+			
+			Pattern patternQueueId = Pattern.compile("(?i)<SAP:QueueId>(.+?)</SAP:QueueId>");
+			Matcher matcherQueueId = patternQueueId.matcher(payload);
+			while (matcherQueueId.find()) {
+				msgHdr.queueId = matcherQueueId.group(1);
+			}
+			
+			Pattern patternSender = Pattern.compile("(?i)<SAP:Main.*?>.*?<SAP:Sender>.*?<SAP:Service>(.+?)</SAP:Service>");
+			Matcher matcherSender = patternSender.matcher(payload);
+			while (matcherSender.find()) {
+				msgHdr.sender = matcherSender.group(1);
+			}
+			
+			Pattern patternReceiver = Pattern.compile("(?i)<SAP:Main.*?>.*?<SAP:Receiver>.*?<SAP:Service>(.+?)</SAP:Service>");
+			Matcher matcherReceiver = patternReceiver.matcher(payload);
+			while (matcherReceiver.find()) {
+				msgHdr.receiver = matcherReceiver.group(1);
+			}
+			
+			r = Response.ok().entity(new Gson().toJson(msgHdr)).build();
+		}
+		catch(ReadMessageException rme) {
+			logger.errorT("Error reading payload for msgid: '" + msgId + "'. " + rme.getMessage());
 			r = Response.serverError().entity("Unable to read payload for this message. See trace file for more detail.").build();
 		}
 		
