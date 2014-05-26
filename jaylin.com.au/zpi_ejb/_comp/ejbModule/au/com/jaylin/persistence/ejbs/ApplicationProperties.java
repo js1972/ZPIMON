@@ -29,18 +29,19 @@ public class ApplicationProperties implements ApplicationPropertiesLocal {
 	private static final String HOST_URL = "HOST_URL";
 	private static final String USERNAME = "USERNAME";
 	private static final String PASSWORD = "PASSWORD";
-	private static final String START_DATE = "START_DATE";
-	private static final String MAX_RESULTS = "MAX_RESULTS";
+	private static final String BASE_DATE = "BASE_DATE";
+	private static final String MESSAGE_MAX_RESULTS = "MESSAGE_MAX_RESULTS";
+	private static final String LOG_ENTRY_MAX_RESULTS = "LOG_ENTRY_MAX_RESULTS";
 	
 	private Location logger = Location.getLocation("pimon.application.properties");
 	private String hostUrl;
 	private String username;
 	private String password;
-	private String startDate;
-	private String maxResults;
+	private String baseDate;
+	private String messageMaxResults;
+	private String logEntryMaxResults;
 	
     public ApplicationProperties() {
-    	logger.infoT("Creating the logger");
     	try {
     		InitialContext ctx = new InitialContext();
     		ApplicationPropertiesAccess appConfigAccess = (ApplicationPropertiesAccess) ctx.lookup("ApplicationConfiguration");
@@ -51,8 +52,9 @@ public class ApplicationProperties implements ApplicationPropertiesLocal {
     		hostUrl = appProps.getProperty(HOST_URL);
     		username = appProps.getProperty(USERNAME);
     		password = appProps.getProperty(PASSWORD);
-    		startDate = appProps.getProperty(START_DATE);
-    		maxResults = appProps.getProperty(MAX_RESULTS);
+    		baseDate = appProps.getProperty(BASE_DATE);
+    		messageMaxResults = appProps.getProperty(MESSAGE_MAX_RESULTS);
+    		logEntryMaxResults = appProps.getProperty(LOG_ENTRY_MAX_RESULTS);
     	}
     	catch (Exception e) {
     		logger.errorT("EXCEPTION: " + e.getMessage());
@@ -98,19 +100,23 @@ public class ApplicationProperties implements ApplicationPropertiesLocal {
 		return password;
 	}
 	
-	public Date getStartDate() {
+	public Date getBaseDate() {
 		Date d = null;
 		
 		try {
-			d = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(startDate);
+			d = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(baseDate);
 		} catch (ParseException e) {
-			throw new RuntimeException("ApplicationProperties exception: Unable to parse start_date: " + startDate);
+			throw new RuntimeException("ApplicationProperties exception: Unable to parse start_date: " + baseDate);
 		};
 		
 		return d;
 	}
 	
-	public int getMaxResults() {
-		return Integer.parseInt(maxResults);
+	public int getMessageMaxResults() {
+		return Integer.parseInt(messageMaxResults);
 	}
+	
+	public int getLogEntryMaxResults() {
+		return Integer.parseInt(logEntryMaxResults);
+	}	
 }
