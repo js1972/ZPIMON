@@ -50,14 +50,12 @@ class MessageDetails {
  */
 @Stateless
 public class PIMessageHandler implements PIMessageHandlerLocal {
-	private static final int GET_LOG_ENTRIES_MAX_RESULTS = 1000;
-	private static final int GET_MESSAGES_MAX_RESULTS = 5000;
 	
 	@EJB
 	private PIMessageFacadeLocal piMessageFacade;
 	@EJB
-	ApplicationPropertiesLocal properties;
-	@EJB
+	ApplicationPropertiesLocal appProperties;
+	@EJB	
 	WebServiceEndPointLocal ws;
         
     private AdapterFilter filter;
@@ -91,7 +89,7 @@ public class PIMessageHandler implements PIMessageHandlerLocal {
     	List<AdapterFrameworkData> messages = callWSAndGetMessageList();    	
     	groupAndStoreMessages(messages);
     	
-    	// *** ADD ERROR MANAGEMENT HERE ***
+    	//TODO *** ADD ERROR MANAGEMENT HERE ***
     	status.status = "success";
     	return status; 
     }
@@ -99,7 +97,7 @@ public class PIMessageHandler implements PIMessageHandlerLocal {
     private List<AdapterFrameworkData> callWSAndGetMessageList() {
     	MessageSearchReturnValue result = null;
     	try {
-    		result = ws.call().getMessageList(filter, GET_MESSAGES_MAX_RESULTS);
+    		result = ws.call().getMessageList(filter, appProperties.getMessageMaxResults());
     	}
     	catch (Exception e) {
     		logger.errorT("PIMessageHandler.callWSAndGetMessageList() -> getMessageList() WS call failed: " + e.getMessage());
@@ -128,7 +126,7 @@ public class PIMessageHandler implements PIMessageHandlerLocal {
     		List<PIMessage> messages = piMessageFacade.findPIMonMsgsById(msgId);
         	PIMessage message = messages.get(0);
         	
-    		auditLogEntryDataArray = ws.call().getLogEntries(message.getMessage_key(), false, GET_LOG_ENTRIES_MAX_RESULTS, null, null);
+    		auditLogEntryDataArray = ws.call().getLogEntries(message.getMessage_key(), false, appProperties.getLogEntryMaxResults(), null, null);
     	}
     	catch (IndexOutOfBoundsException ioob) {
     		logger.errorT("Failed to read message in readMessageLogByMsgId(): '" + msgId + "'; Exception: " + ioob.getMessage());
@@ -164,7 +162,7 @@ public class PIMessageHandler implements PIMessageHandlerLocal {
     		results = ws.call().cancelMessages(messageKeys);
     	}
     	catch (Exception e) {
-    		//what goes here?!?
+    		//TODO what goes here?!?
     		throw new RuntimeException("*** HOLY SHIT *** FAILED TO CANCEL MSG LOG FOR MSGKEY: " + message.getMessage_key() + " --- " + e.getMessage() + " --- " + e.getClass());
 		}
     	
@@ -201,7 +199,7 @@ public class PIMessageHandler implements PIMessageHandlerLocal {
     		results = ws.call().resendMessages(messageKeys);
     	}
     	catch (Exception e) {
-    		//what goes here?!?
+    		//TODO what goes here?!?
     		throw new RuntimeException("*** HOLY SHIT *** FAILED TO RE-SEND MSG LOG FOR MSGKEY: " + message.getMessage_key() + " --- " + e.getMessage() + " --- " + e.getClass());
 		}
     	
@@ -235,10 +233,8 @@ public class PIMessageHandler implements PIMessageHandlerLocal {
     private void setupWSFilterParams() {
     	Date d = piMessageFacade.getPIMonMsgsLatestEndTime();
     	if (d == null) {
-    		// set a start time-stamp (one-off for when data table is empty)
-    		Calendar cal = Calendar.getInstance();
-    		cal.set(PITimeStamp.INITIAL_START_YEAR, PITimeStamp.INITIAL_START_MONTH, PITimeStamp.INITIAL_START_DAY, 0, 0, 0);
-    		d = cal.getTime();
+    		logger.infoT(String.format("No previous messages found, using default base date: %s to find messages from", appProperties.getBaseDate().toString()));
+    		d = appProperties.getBaseDate();
     	}
     	
 		filter.setFromTime(new PITimeStamp().getXMLTimeStampWithSlidingWindow(d, PITimeStamp.TimeStampType.from));
