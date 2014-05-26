@@ -1,0 +1,2 @@
+#Override .gitignore at the root level and include JAR's in this folder. The whole DC's purpose is to be a collection of libraries so we want it tracked in source control
+!*.jar
